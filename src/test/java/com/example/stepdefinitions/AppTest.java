@@ -1,10 +1,9 @@
-package test.java.com.example.stepdefitions;
+package com.example.stepdefinitions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.cucumber.java.en.*;
 
@@ -14,7 +13,6 @@ public class AppTest{
     @Given("I am on the Sauce Demo login page")
     public void iAmOnTheSaucedemoLoginPage() {
         System.setProperty("webdriver.chrome.driver", "/opt/homebrew/bin/chromedriver");
-        // Buat instance ChromeDriver
         driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/");
     }
@@ -45,24 +43,24 @@ public class AppTest{
     @Then("I should see an error message 'Epic sadface: Sorry, this user has been locked out.'")
     public void iShouldSeeAnErrorMessageLockedOutUser(){
         WebElement errorMessage = driver.findElement(By.xpath("//*[@data-test = 'error']"));
-        junit.framework.Assert.assertTrue(errorMessage.isDisplayed());
-        junit.framework.Assert.assertEquals("Epic sadface: Sorry, this user has been locked out.", errorMessage.getText());
+        org.junit.Assert.assertTrue(errorMessage.isDisplayed());
+        org.junit.Assert.assertEquals("Epic sadface: Sorry, this user has been locked out.", errorMessage.getText());
         driver.quit();
     }
 
     @Then("I should see an error message 'Epic sadface: Username and password do not match any user in this service'")
     public void iShouldSeeAnErrorMessageInvalidCredentials(){
         WebElement errorMessage = driver.findElement(By.xpath("//*[@data-test = 'error']"));
-        junit.framework.Assert.assertTrue(errorMessage.isDisplayed());
-        junit.framework.Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
+        org.junit.Assert.assertTrue(errorMessage.isDisplayed());
+        org.junit.Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
         driver.quit();
     }
 
     @Then("I should be redirected to the inventory page")
     public void iShouldBeRedirectedToTheInventoryPage(){
-        junit.framework.Assert.assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
+        org.junit.Assert.assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
         WebElement inventoryList = driver.findElement(By.className("inventory_list"));
-        junit.framework.Assert.assertTrue(inventoryList.isDisplayed());
+        org.junit.Assert.assertTrue(inventoryList.isDisplayed());
         driver.quit();
     }
 

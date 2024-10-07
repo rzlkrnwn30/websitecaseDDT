@@ -1,2 +1,2 @@
-test/java/com/example/testrunner/TestRunner.class
-test/java/com/example/stepdefitions/AppTest.class
+com/example/stepdefinitions/AppTest.class
+com/example/testrunner/TestRunner.class
